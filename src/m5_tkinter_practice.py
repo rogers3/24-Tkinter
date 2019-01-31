@@ -3,8 +3,8 @@ This project lets you try out Tkinter/Ttk and practice it!
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Mark Hays, Amanda Stouder, Aaron Wilkin, their colleagues,
-         and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         and Christina Rogers.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import tkinter
 from tkinter import ttk
@@ -13,37 +13,48 @@ from tkinter import ttk
 def main():
     """ Constructs a GUI with stuff on it. """
     # -------------------------------------------------------------------------
-    # TODO: 2. After reading and understanding the m1e module,
+    # DONE: 2. After reading and understanding the m1e module,
     #   ** make a window that shows up. **
     # -------------------------------------------------------------------------
+    window = tkinter.Tk()
 
     # -------------------------------------------------------------------------
-    # TODO: 3. After reading and understanding the m2e module,
+    # DONE: 3. After reading and understanding the m2e module,
     #   ** put a Frame on the window. **
     # -------------------------------------------------------------------------
+    frame = ttk.Frame(window, padding =10)
+    frame.grid()
 
     # -------------------------------------------------------------------------
-    # TODO: 4. After reading and understanding the m2e module,
+    # DONE: 4. After reading and understanding the m2e module,
     #   ** put a Button on the Frame. **
     # -------------------------------------------------------------------------
+    button = ttk.Button(window, text = 'Button 1')
+    button.grid()
 
     # -------------------------------------------------------------------------
-    # TODO: 5. After reading and understanding the m3e module,
+    # DONE: 5. After reading and understanding the m3e module,
     #   ** make your Button respond to a button-press **
     #   ** by printing   "Hello"  on the Console.     **
     # -------------------------------------------------------------------------
+    button['command'] = lambda: print('Hello')
 
     # -------------------------------------------------------------------------
-    # TODO: 6. After reading and understanding the m4e module,
+    # DONE: 6. After reading and understanding the m4e module,
     #   -- Put an Entry box on the Frame.
     #   -- Put a second Button on the Frame.
     #   -- Make this new Button, when pressed, print "Hello"
     #        on the Console if the current string in the Entry box
     #        is the string 'ok', but print "Goodbye" otherwise.
     # -------------------------------------------------------------------------
+    entryBox = ttk.Entry(window)
+    entryBox.grid()
+    b2 = ttk.Button(window, text = 'Button 2')
+    b2.grid()
+    b2['command'] = lambda: button2press(entryBox)
 
     # -------------------------------------------------------------------------
-    # TODO: 7.
+    # DONE: 7.
     #    -- Put a second Entry on the Frame.
     #    -- Put a third Button on the frame.
     #    -- Make this new Button respond to a button-press as follows:
@@ -65,10 +76,30 @@ def main():
     #      s = entry_box.get()
     #      n = int(s)
     ####################################################################
+    eb2 = ttk.Entry(window)
+    eb2.grid()
+    b3 = ttk.Button(window, text = 'Button 3')
+    b3.grid()
+    b3['command'] = lambda: button3press(entryBox, eb2)
 
     # -------------------------------------------------------------------------
-    # TODO: 8. As time permits, do other interesting GUI things!
+    # DONE: 8. As time permits, do other interesting GUI things!
     # -------------------------------------------------------------------------
+
+    window.mainloop()
+
+def button2press(entryBox):
+    entry = entryBox.get()
+    if entry == 'ok':
+        print('Hello')
+    else:
+        print('Goodbye')
+
+def button3press(eb1, eb2):
+    e1 = eb1.get()
+    e2 = eb2.get()
+    for k in range (int(e2)):
+        print (e1)
 
 
 # -----------------------------------------------------------------------------
